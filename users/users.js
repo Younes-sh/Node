@@ -18,5 +18,5 @@ module.exports = [
         "id":4,
         "name":"sepandar",
         "age":39
-    }
+    },
 ]

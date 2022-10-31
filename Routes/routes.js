@@ -16,16 +16,46 @@ router.get('/:id',(req,res) => {
     })
     res.status(200).json({
         data:user,
+        success:true,
+    })
+})
+
+router.post('/:id',(req,res) => {
+    req.body.id = parseInt(req.body.id);
+    users.push(req.body);
+    res.json({
+        data:'user added successfully',
         success:true
     })
 })
 
-router.post('/',(req,res) => {
-    req.body.id = parseInt(req.body.id);
-    users.push(req.body);
+
+router.put('/:id',(req,res) => {
+    users = users.map(user => {
+        if(user.id == req.params.id){
+            return req.body ;
+        }else{
+            return user ;
+        }
+    })
     res.json({
-        data:'user added successfully'
+        data:'user is edited successfully',
+        success:true
     })
 })
+
+
+router.delete('/:id', (req,res) => {
+    users = users.filter(user => {
+        if(user.id != req.params.id){
+            return user ;
+        }
+    })
+    res.json({
+        data:'user was deleted',
+        success:true
+    })
+})
+
 
 module.exports = router ; 
