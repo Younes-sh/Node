@@ -20,11 +20,11 @@ router.get('/:id',(req,res) => {
     })
 })
 
-router.post('/:id',(req,res) => {
+router.post('/', (req,res) => {
     req.body.id = parseInt(req.body.id);
     users.push(req.body);
     res.json({
-        data:'user added successfully',
+        data:'user is added',
         success:true
     })
 })
